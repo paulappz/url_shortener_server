@@ -53,6 +53,17 @@ class ShortenerController {
         }
     }
 
+    //Get Url list
+    async getUrls(req: Request, res: Response) {
+
+        try {
+            const records = await UrlModel.find({});
+            return res.status(200).json({ urls: records });
+        } catch (error) {
+            return res.status(500).json({ message: 'Some thing went wrong!' });
+        }
+    }
+
 
 }
 

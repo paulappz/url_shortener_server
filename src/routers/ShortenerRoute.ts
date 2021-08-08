@@ -20,6 +20,10 @@ class ShortenerRoute {
             await UrlController.redirectUrl(req, res);
         });
 
+        this.router.get('/api/list', async (req, res) => {
+            await UrlController.getUrls(req, res);
+          });
+
 
 
     }
