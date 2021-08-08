@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 
 
 // Import Router
+import router from './routers/ShortenerRoute';
 
 
 class ApiApp {
@@ -15,7 +16,7 @@ class ApiApp {
 
   start(port: string | number = 3000) {
     return this.application.listen(port, () => {
-      // eslint-disable-next-line no-console
+
       console.log(`listening on port ${port}`);
     });
   }
@@ -30,9 +31,10 @@ class ApiApp {
 
   private setupRouters() {
     this.application.get('/', (_, res) => {
-      res.json({ message: 'Welcome to our service!'});
+      res.json({ message: 'Welcome to url Shorten service!'});
     });
 
+    this.application.use('/', router.getRouter());
 
   }
 }

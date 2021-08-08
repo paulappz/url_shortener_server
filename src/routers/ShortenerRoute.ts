@@ -12,7 +12,11 @@ class ShortenerRoute {
 
   private setupRouter() {
 
-    
+    this.router.post('/api/encode', async (req, res) => {
+        await UrlController.shortenUrl(req, res);
+      });
+  
+
 
 
   }
