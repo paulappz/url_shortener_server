@@ -3,27 +3,30 @@ import { Router } from 'express';
 import UrlController from '../controllers/ShortenerController';
 
 class ShortenerRoute {
-  private router: Router;
+    private router: Router;
 
-  constructor() {
-    this.router = Router();
-    this.setupRouter();
-  }
+    constructor() {
+        this.router = Router();
+        this.setupRouter();
+    }
 
-  private setupRouter() {
+    private setupRouter() {
 
-    this.router.post('/api/encode', async (req, res) => {
-        await UrlController.shortenUrl(req, res);
-      });
-  
+        this.router.post('/api/encode', async (req, res) => {
+            await UrlController.shortenUrl(req, res);
+        });
+
+        this.router.get('/:shortId', async (req, res) => {
+            await UrlController.redirectUrl(req, res);
+        });
 
 
 
-  }
+    }
 
-  getRouter() {
-    return this.router;
-  }
+    getRouter() {
+        return this.router;
+    }
 }
 
 export default new ShortenerRoute();

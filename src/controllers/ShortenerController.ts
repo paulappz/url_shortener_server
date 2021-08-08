@@ -7,7 +7,7 @@ import UrlModel from '../models/UrlModel';
 class ShortenerController {
 
 
-    // Shorten a lomg Url 
+    // Shorten a lomg Url  - Encode
     async shortenUrl(req: Request, res: Response) {
         const { url } = req.body;
 
@@ -34,6 +34,24 @@ class ShortenerController {
         }
     }
 
+    //Redirect to long uel
+    async redirectUrl(req: Request, res: Response) {
+        const { shortId } = req.params;
+
+        if (!shortId) {
+            return res.status(400).json({ message: 'shortId is not provided' });
+        }
+
+        try {
+            const record = await UrlModel.findOne({ shortId });
+            if (!record) {
+                return res.status(400).json({ message: 'shortId is invalid' });
+            }
+            return res.redirect(record.url);
+        } catch (error) {
+            return res.status(500).json({ message: 'Some thing went wrong!' });
+        }
+    }
 
 
 }
