@@ -1,0 +1,26 @@
+version: "3"
+services:
+    url-api:
+      build: .
+      ports: 
+        - "4000:4000"
+      environment:
+        -  PORT=4000
+      depends_on:
+        - url-db
+        - redis
+      links:
+        - redis
+      volumes:
+        - .:/app
+                  
+    url-db:
+      image: mongo
+      volumes:
+        - db:/data/db
+      ports:
+        - '27017:27017'
+
+volumes:
+  db:
+  app:
