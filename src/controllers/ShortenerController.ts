@@ -68,7 +68,6 @@ class ShortenerController {
 
     async decodeUrl(req: Request, res: Response) {
         const { shortId } = req.body;
-        console.log(shortId);
 
         if (!shortId) {
             return res.status(400).json({ message: 'shortId is not provided' });
