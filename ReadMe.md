@@ -6,7 +6,7 @@
 
 ## Architecture
 
-<img src="sketch/architecture.png" alt="architecture" />
+<img src="/architecture.png" alt="architecture" />
 
 ## Technologies
 
