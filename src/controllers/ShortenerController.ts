@@ -64,6 +64,28 @@ class ShortenerController {
         }
     }
 
+    //Decode a short Url.
+
+    async decodeUrl(req: Request, res: Response) {
+        const { shortId } = req.body;
+        console.log(shortId);
+
+        if (!shortId) {
+            return res.status(400).json({ message: 'shortId is not provided' });
+        }
+
+        try {
+            const record = await UrlModel.findOne({ shortId });
+            if (record) {
+                return res.status(200).json({ shortId, url: record.url });
+            }
+            else { return res.status(200).json({ message: 'Invalid shortId' }); }
+
+        } catch (error) {
+            return res.status(500).json({ message: 'Some thing went wrong!' });
+        }
+    }
+
 
 }
 

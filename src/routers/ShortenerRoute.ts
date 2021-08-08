@@ -22,8 +22,11 @@ class ShortenerRoute {
 
         this.router.get('/api/list', async (req, res) => {
             await UrlController.getUrls(req, res);
-          });
+        });
 
+        this.router.post('/api/decode', async (req, res) => {
+            await UrlController.decodeUrl(req, res);
+        });
 
 
     }
