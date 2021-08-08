@@ -1,0 +1,17 @@
+{
+  "name": "url_shortner",
+  "version": "1.0.0",
+  "description": "To shorten long URLs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint ./src --ext .ts",
+    "prestart": "npm run build",
+    "start": "node ./dist/server.js",
+    "dev": "nodemon"
+  },
+  "author": "Paul Oluyege",
+  "license": "ISC"
+}
+
