@@ -57,7 +57,7 @@ class ShortenerController {
     async getUrls(req: Request, res: Response) {
 
         try {
-            const records = await UrlModel.find({});
+            const records = await UrlModel.find({}).sort({'createdAt':-1});
             return res.status(200).json({ urls: records });
         } catch (error) {
             return res.status(500).json({ message: 'Some thing went wrong!' });

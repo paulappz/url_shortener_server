@@ -11,8 +11,23 @@ class ApiApp {
   constructor() {
     this.application = express();
     this.setupGlobalMiddleware();
+    this.handleCors();
     this.setupRouters();
   }
+
+
+handleCors(){
+  return  this.application.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-type,Accept,x-access-token,X-Key');
+    if (req.method == 'OPTIONS') {
+      res.status(200).end();
+    } else {
+      next();
+    }
+  });
+}
 
   start(port: string | number = 3000) {
     return this.application.listen(port, () => {
