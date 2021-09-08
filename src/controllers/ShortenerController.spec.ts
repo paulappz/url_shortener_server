@@ -57,6 +57,8 @@ describe('ShortenerController', () => {
         jest.resetAllMocks();
     });
 
+    jest.setTimeout(100000);
+
     describe('redirectUrl', () => {
         it('should response with status 400 when shortId is not provided', async () => {
             request.params = {};

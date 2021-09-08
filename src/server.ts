@@ -14,7 +14,7 @@ dotenv.config();
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-  });
+  }).catch(err => console.log(err));
 
   // Start Application
   ApiApp.start(process.env.PORT);
