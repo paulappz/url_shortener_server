@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "To shorten long URLs",
   "main": "index.js",
+  "engines": { "node": "12.16.3" },
   "scripts": {
     "build": "tsc",
     "test": "jest",
     "lint": "eslint ./src --ext .ts",
     "prestart": "npm run build",
     "start": "node ./dist/server.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "postinstall": "tsc",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "Paul Oluyege",
   "license": "ISC",
